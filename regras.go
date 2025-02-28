@@ -44,7 +44,7 @@ func GetResultadoVencedor(jogador OpcaoDeEscolha, maquina OpcaoDeEscolha) Result
 	return Resultado{
 		Resultado: StatusResultado{
 			Code:  2,
-			Label: "você perdeu",
+			Label: "a máquina ganhou",
 		},
 		EscolhidoPorVoce:     jogador.Escolha,
 		EscolhidoPelaMaquina: maquina.Escolha,

@@ -1,0 +1,46 @@
+definitions:
+  main.Resultado:
+    properties:
+      escolhido_pela_maquina:
+        type: string
+      escolhido_por_voce:
+        type: string
+      mensagem_de_erro:
+        type: string
+      resultado:
+        $ref: '#/definitions/main.StatusResultado'
+    type: object
+  main.StatusResultado:
+    properties:
+      code:
+        type: integer
+      label:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Retorna um resultado de quem ganhou
+      parameters:
+      - description: escolha de qual jogada vai fazer
+        in: query
+        name: escolha
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Resultado
+          schema:
+            items:
+              $ref: '#/definitions/main.Resultado'
+            type: array
+      summary: Faz a jogada do jokenpo
+      tags:
+      - datas
+swagger: "2.0"

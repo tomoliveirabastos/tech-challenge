@@ -1,0 +1,73 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Retorna um resultado de quem ganhou",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "datas"
+                ],
+                "summary": "Faz a jogada do jokenpo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "escolha de qual jogada vai fazer",
+                        "name": "escolha",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.Resultado"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Resultado": {
+            "type": "object",
+            "properties": {
+                "escolhido_pela_maquina": {
+                    "type": "string"
+                },
+                "escolhido_por_voce": {
+                    "type": "string"
+                },
+                "mensagem_de_erro": {
+                    "type": "string"
+                },
+                "resultado": {
+                    "$ref": "#/definitions/main.StatusResultado"
+                }
+            }
+        },
+        "main.StatusResultado": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

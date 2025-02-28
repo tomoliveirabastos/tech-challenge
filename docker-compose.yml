@@ -9,7 +9,7 @@ services:
         restart: always
         environment:
             PORT: 9501
-        command: ./server --server
+        command: ./server
         networks:
           vpcbr:
             ipv4_address: 10.5.0.6
@@ -27,7 +27,7 @@ services:
         environment:
             PORT: 9502
             
-        command: ./server --server
+        command: ./server
         networks:
           vpcbr:
             ipv4_address: 10.5.0.7
@@ -36,7 +36,7 @@ services:
                 limits:
                     cpus: '0.4'
                     memory: '0.3GB'
-                    
+
     nginx:
         container_name: nginx
         image: nginx:alpine

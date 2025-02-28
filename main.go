@@ -26,7 +26,7 @@ func main() {
 
 // @Summary		Faz a jogada do jokenpo
 // @Description	Retorna um resultado de quem ganhou
-// @Tags			datas
+// @Tags			result
 // @Accept			json
 // @Produce		json
 // @Param			escolha			query		string													true	"escolha de qual jogada vai fazer (pedra,papel,tesoura)"

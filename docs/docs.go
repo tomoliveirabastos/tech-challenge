@@ -25,13 +25,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "datas"
+                    "result"
                 ],
                 "summary": "Faz a jogada do jokenpo",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "escolha de qual jogada vai fazer",
+                        "description": "escolha de qual jogada vai fazer (pedra,papel,tesoura)",
                         "name": "escolha",
                         "in": "query",
                         "required": true

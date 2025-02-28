@@ -26,7 +26,7 @@ paths:
       - application/json
       description: Retorna um resultado de quem ganhou
       parameters:
-      - description: escolha de qual jogada vai fazer
+      - description: escolha de qual jogada vai fazer (pedra,papel,tesoura)
         in: query
         name: escolha
         required: true
@@ -42,5 +42,5 @@ paths:
             type: array
       summary: Faz a jogada do jokenpo
       tags:
-      - datas
+      - result
 swagger: "2.0"

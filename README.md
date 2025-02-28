@@ -16,4 +16,4 @@ PORT=3000 ./server
 ```
 
 ### swagger se encontra nesse caminho
-http://127.0.0.1:9999/doc# tech-challenge
+http://127.0.0.1:9999/doc

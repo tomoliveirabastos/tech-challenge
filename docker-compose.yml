@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+    ap1:
+        container_name: ap1
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        environment:
+            PORT: 9501
+        command: ./server --server
+        networks:
+          vpcbr:
+            ipv4_address: 10.5.0.6
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.4'
+                    memory: '0.3GB'
+    ap2:
+        container_name: ap2
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            PORT: 9502
+            
+        command: ./server --server
+        networks:
+          vpcbr:
+            ipv4_address: 10.5.0.7
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.4'
+                    memory: '0.3GB'
+                    
+    nginx:
+        container_name: nginx
+        image: nginx:alpine
+        restart: always
+        volumes:
+            - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+          - 9999:9999
+        depends_on:
+          - ap1
+          - ap2
+        networks:
+          vpcbr:
+            ipv4_address: 10.5.0.4
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.1'
+                    memory: '0.2GB'
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
